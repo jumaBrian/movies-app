@@ -4,8 +4,15 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,12 +32,16 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MyApp(content: @Composable () -> Unit) {
     MovieAppTheme {
-        Scaffold(topBar = {
-            TopAppBar(backgroundColor = Color.Magenta,
-            elevation = 5.dp ) {
-                Text(text = "Movies")
-            }
-        },) {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    backgroundColor = Color.Magenta,
+                    elevation = 5.dp
+                ) {
+                    Text(text = "Movies")
+                }
+            },
+        ) {
             content()
         }
     }
@@ -38,10 +49,25 @@ fun MyApp(content: @Composable () -> Unit) {
 
 
 @Composable
-fun MainContent() {
-    Surface(color = MaterialTheme.colors.background) {
-        Text(text = "Hello")
+fun MainContent(
+    movieList: List<String> = listOf(
+        "Avatar",
+        "Love and Thunder",
+        "You are the one"
+    )
+) {
+    Column(modifier = Modifier.padding(12.dp)) {
+        LazyColumn {
+            items(items = movieList) {
+                Text(text = it)
+            }
+        }
     }
+}
+
+@Composable
+fun MovieRow(movie: String) {
+
 }
 
 

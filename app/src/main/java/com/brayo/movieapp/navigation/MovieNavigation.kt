@@ -6,8 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.brayo.movieapp.screens.home.HomeScreen
 import com.brayo.movieapp.screens.details.DetailsScreen
+import com.brayo.movieapp.screens.home.HomeScreen
 
 @Composable
 fun MovieNavigation() {
@@ -20,14 +20,16 @@ fun MovieNavigation() {
             HomeScreen(navController = navController)
         }
 
-        composable(MovieScreens.DetailsScreen.name + "/{movie}",
-            arguments = listOf(navArgument(name = "movie") { type = NavType.StringType
+        composable(
+            MovieScreens.DetailsScreen.name + "/{movie}",
+            arguments = listOf(navArgument(name = "movie") {
+                type = NavType.StringType
             })
-        ) {
-            backStackEntry ->
-            DetailsScreen(navController = navController,
-                backStackEntry.arguments?.getString("movie"))
+        ) { backStackEntry ->
+            DetailsScreen(
+                navController = navController,
+                backStackEntry.arguments?.getString("movie")
+            )
         }
-
     }
 }

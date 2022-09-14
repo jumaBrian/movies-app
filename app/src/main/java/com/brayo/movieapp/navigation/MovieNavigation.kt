@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.brayo.movieapp.screens.HomeScreen
+import com.brayo.movieapp.screens.home.HomeScreen
 import com.brayo.movieapp.screens.details.DetailsScreen
 
 @Composable
